@@ -1,6 +1,6 @@
 // src/pages/AdminPanel.js
 import React, { useEffect, useState } from "react";
-import userService from "../services/userService";
+import userService from "../services/UserService";
 import UserForm from "../components/UserForm";
 
 const AdminPanel = () => {

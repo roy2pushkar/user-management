@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./store/actions/userActions";
 import { Link } from "react-router-dom";
+import { Provider } from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();

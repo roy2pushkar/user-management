@@ -1,17 +1,17 @@
 // src/pages/Register.js
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
 import UserForm from "../components/UserForm";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleRegister = async (formData) => {
     try {
       await authService.register(formData);
-      history.push("/login");
+      navigate.push("/login");
     } catch (err) {
       setError(err.response.data.message);
     }

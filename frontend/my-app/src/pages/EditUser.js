@@ -1,12 +1,12 @@
 // src/pages/EditUser.js
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import userService from "../services/userService";
+import { useNavigate, useParams } from "react-router-dom";
+import userService from "../services/UserService";
 import UserForm from "../components/UserForm";
 
 const EditUser = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
@@ -25,7 +25,7 @@ const EditUser = () => {
   const handleUpdateUser = async (formData) => {
     try {
       await userService.updateUser(id, formData);
-      history.push("/admin");
+      navigate.push("/admin");
     } catch (err) {
       setError(err.response.data.message);
     }

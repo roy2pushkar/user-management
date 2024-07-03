@@ -1,12 +1,12 @@
 // src/pages/Login.js
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await authService.login(formData);
-      history.push("/admin");
+      navigate.push("/admin");
     } catch (err) {
       setError(err.response.data.message);
     }
